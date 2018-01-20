@@ -24,9 +24,7 @@ class FlatListItem extends Component {
     return(
         <View style={{ flex: 1, backgroundColor: this.props.index % 2 == 0 ? '#e74c3c' : '#2980b9'}}>
           <Text style={styles.flatListItem}> {this.props.item.activity} - {this.props.item.description}</Text>  
-          <Text style={styles.flatListItem}>({this.props.item.created_at}</Text>  
-
-          {/* <Text style={styles.flatListItem}> Dibuat pada tanggal : {item.created_at}</Text>   */}
+          <Text style={styles.flatListItem}>({this.props.item.created_at})</Text>  
         </View>
     );
   }
@@ -40,7 +38,7 @@ export default class Home extends Component <{}> {
     this.state = {
       isLoading : true,
       error: null,
-      refreshing: false,
+      refreshing: true,
     }
   }
 
