@@ -14,7 +14,8 @@ import {
   Button,
   Alert,
   ActivityIndicator,
-  FlatList, ListView, RefreshControl
+  FlatList, 
+  RefreshControl
 } from 'react-native';
 import { navigationOptions } from 'react-navigation';
 
