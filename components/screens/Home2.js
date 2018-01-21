@@ -15,7 +15,8 @@ import {
   Alert,
   ActivityIndicator,
   FlatList, 
-  RefreshControl
+  RefreshControl,
+  Modal
 } from 'react-native';
 import { navigationOptions } from 'react-navigation';
 
@@ -30,8 +31,78 @@ class FlatListItem extends Component {
   }
 }
 
+class Header extends Component{
+  state = {
+    modalVisible: false,
+  };
+  
+
+  openModal() {
+    this.setState({modalVisible:true});
+  }
+
+  closeModal() {
+    this.setState({modalVisible:false});
+  }
+
+  render() {
+    
+    return (
+      <View style={{flex:1, margin:10}}>
+        <Modal
+              visible={this.state.modalVisible}
+              animationType={'slide'}
+              onRequestClose={() => this.closeModal()}
+          >
+        <View style={styles.modalContainer}>
+          <Text style={styles.welcome}>
+            Tambah Catatan Baru
+          </Text>
+          <Text style={{color:'white'}}>
+            Silahkan masukkan deskripsi
+          </Text>
+          <TextInput 
+          style={{width: 300, color:"white"}}
+          placeholder="Masukkan kegiatan anda...."
+          placeholderTextColor="white"
+          underlineColorAndroid="white"
+          />
+          <TextInput 
+          style={{width: 300, color:"white"}}
+          secureTextEntry={true}
+          placeholder="Masukkan deskripsi...."
+          placeholderTextColor="white"
+          underlineColorAndroid="white"
+          />
+          <View style={{ marginTop: 20}}>
+              <Button
+                  title= "Login"
+                  color="#3498db"
+                  onPress = {() => this.props.navigation.navigate('Home')}
+                  >
+              </Button>
+          </View>
+          {/* <Text style={styles.instructions}>
+            {instructions}
+          </Text> */}
+      </View>
+          </Modal>
+        <Button title="Add Data" onPress={() => this.openModal()} color="red" />
+      </View>
+    );
+  }
+}
+
+const MyPhotosHomeScreen = ({ navigation }) => (
+  <Header navigation={navigation} />
+);
 
 export default class Home extends Component <{}> {
+
+  static navigationOptions  = {
+    headerRight: <Header />,
+  }
+
 
   constructor(props){
     super(props);
@@ -109,11 +180,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'white',
   },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#2c3e50',
+  },
   welcome: {
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
-    color: '#2c3e50'
+    color: 'white'
   },
   flatListItem: {
     padding : 10,

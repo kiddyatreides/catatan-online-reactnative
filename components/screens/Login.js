@@ -13,7 +13,8 @@ import {
   TextInput,
   Button,
   Alert,
-  BackHandler
+  BackHandler,
+  Header
 } from 'react-native';
 import { navigationOptions } from 'react-navigation';
 
@@ -24,7 +25,20 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
+class Greeting extends Component {
+  render() {
+    return (
+      <Text>Hello {this.props.name}!</Text>
+    );
+  }
+}
+
+
 export default class Login extends Component<{}> {
+
+  static navigationOptions = {
+    headerRight: <Button title="Info" />,
+  };
 
   componentDidMount(){
     
@@ -40,6 +54,7 @@ export default class Login extends Component<{}> {
 
     return (
       <View style={styles.container}>
+      
         <Text style={styles.welcome}>
           Welcome to React Native!
         </Text>

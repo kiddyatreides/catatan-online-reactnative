@@ -4,6 +4,7 @@ import { StackNavigator } from 'react-navigation';
 import Login from './screens/Login';
 import Home from './screens/Home2';
 import Splash from './screens/Splash';
+import Modal from './screens/Modal';
 
 const App = StackNavigator({
     Splash: {
@@ -18,7 +19,6 @@ const App = StackNavigator({
         screen: Login, 
         navigationOptions : 
         {
-            header: null,
             title: "Login"
         }
     },
@@ -26,8 +26,14 @@ const App = StackNavigator({
         screen: Home, 
         navigationOptions : 
         {
-            header: null,
             title: "Home"
+        }
+    },
+    Modal: {
+        screen: Modal, 
+        navigationOptions : 
+        {
+            title: "Modal"
         }
     },
 
